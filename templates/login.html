@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <style>
+        .loginBord {
+            width: 310px;
+            min-height: 420px;
+            color: #333;
+            margin: 0 auto;
+        }
+
+        .tosignup {
+            padding-top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+{#    <form action="" method="post">#}
+
+<div class="loginBord" id="login-base">
+    <div class="loginTit">
+
+        <div class="tosignup">
+            <a target="_blank" href="" style="margin-right:10px;color:#969696;">无法登录?</a>
+            |<a href="/register/" class="btn-danger" style="margin-left:10px;">注册</a>
+        </div>
+
+        <h1 style="color:#333;">BBs_cnBlog</h1>
+    </div>
+    <form action="" method="post" role="form">
+        {% csrf_token %}
+
+        <div class="inpBox textbox_ui user">
+            <div class="form-group field-loginform-username required has-success">
+                <label class="control-label" for="loginform-username"></label>
+                <input type="text" class="form-control" name="user" placeholder="用户名/邮箱/手机">
+
+                {#<div class="custom invalid error_9o8Kl" style="display:none"></div>#}
+            </div>
+        </div>
+        <div class="inpBox textbox_ui pass zxfpass">
+            <div class="form-group field-loginform-password required has-success">
+                <label class="control-label" for="loginform-password"></label>
+                <input type="password" class="form-control" name="pwd" placeholder="密码">
+
+                <div class="custom invalid error_9o8Kl" style="display:none"></div>
+            </div>
+        </div>
+
+
+        <div class="clearfix zxfDl">
+            <a class="fr" href="">忘记密码?</a>
+            <label for="agree_userterm" class="fr">
+                <div class="form-group field-loginform-rememberme">
+                    <div class="checkbox">
+                        <label for="loginform-rememberme">
+                            <input type="hidden" name="LoginForm[rememberMe]" value="0">
+                            <input type="checkbox" id="loginform-rememberme" name="LoginForm[rememberMe]" value="1">
+                            10天内自动登录
+                        </label>
+                        <div class="custom invalid error_9o8Kl" style="display:none"></div>
+
+                    </div>
+                </div>
+            </label>
+            <input type="submit" class="btn btn-primary" name="login-button" value="登 录"></div>
+        <div id="errorMsg"></div>
+    </form>
+
+</div>
+
+{#    </form>#}
+</body>
+</html>
