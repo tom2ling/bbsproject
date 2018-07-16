@@ -5,3 +5,9 @@ from django.test import TestCase
 
 def haha(request):
 	print (hahaha)
+	
+
+	
+	
+def xiaxia(request):
+	print(hxiaxia)
