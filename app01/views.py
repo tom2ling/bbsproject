@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 
 # Create your views here.
 
@@ -8,6 +8,22 @@ import json
 from django.http import JsonResponse
 from django.db.models import F
 from django.db import transaction
+from utils.code import check_code
+
+def code(request):
+    """
+    生成验证码
+    :param request:
+    :return:
+    """
+
+    img ,random_code = check_code()
+    request.session['random_code'] = random_code
+    from io import BytesIO
+    stream = BytesIO()
+    img.save(stream,'png')
+    return HttpResponse(stream.getvalue())
+
 
 
 def login(request):
@@ -15,9 +31,15 @@ def login(request):
         user = request.POST.get('user')
         pwd = request.POST.get('pwd')
         user = auth.authenticate(username=user,password=pwd)
+        code = request.POST.get('code')
+        if code.upper() != request.session['random_code'].upper():
+            return render(request, 'login.html', {'msg': '验证码错误'})
+
         if user:
             auth.login(request,user)
             return redirect('/index/')
+        else:
+            return render(request, "login.html",{'msg': '用户名或密码错误'})
     return render(request, "login.html")
 
 def index(request):

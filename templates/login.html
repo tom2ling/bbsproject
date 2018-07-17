@@ -50,6 +50,15 @@
                 <div class="custom invalid error_9o8Kl" style="display:none"></div>
             </div>
         </div>
+        <div class="inpBox textbox_ui code">
+            <div class="form-group required has-success">
+                <label class="control-label" for="loginform-code"></label>
+                <input type="text" class="form-control" name="code" placeholder="验证码">
+                <img onclick="changeImg(this);" src="/code/" alt="" title="点击更换">
+
+                <div class="custom invalid error_9o8Kl" style="display:none"></div>
+            </div>
+        </div>
 
 
         <div class="clearfix zxfDl">
@@ -67,12 +76,21 @@
                     </div>
                 </div>
             </label>
-            <input type="submit" class="btn btn-primary" name="login-button" value="登 录"></div>
+            <input type="submit" class="btn btn-primary" name="login-button" value="登 录"><p style="color: red;font-size: 16px">{{ msg }}</p> </div>
         <div id="errorMsg"></div>
     </form>
 
 </div>
 
 {#    </form>#}
+<script>
+    function changeImg(ths) {
+        ths.src = ths.src + '?'
+
+    }
+
+</script>
+
+
 </body>
 </html>
